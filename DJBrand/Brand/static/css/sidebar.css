@@ -1,0 +1,30 @@
+Div.sidebar{
+    padding: 1%;
+  position: fixed;
+  top: 50px;
+  left: 1px;
+  width: 250px;
+  height: 100%;
+}
+
+.dropdown-toggle {
+    white-space: normal!important;
+}
+
+.brand_sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.kosh {
+    position: fixed;
+    color: midnightblue;
+    top: 38em;
+    padding: 1%;
+    position: fixed;
+    left: 1px;
+    width: 250px;
+    height: 100%;
+}
+
+

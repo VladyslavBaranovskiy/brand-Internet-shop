@@ -1,0 +1,29 @@
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 17em;
+    width: 82%;
+    flex-direction: column;
+}
+
+
+.suc {
+        display: grid;
+        padding-top: 15%;
+    justify-items: center;
+    margin-bottom: 10%;
+}
+
+.success-message {
+    font-size: 40px;
+}
+
+.success-messageу {
+    font-size: 20px;
+}
+
+.but {
+    display: grid;
+}
+

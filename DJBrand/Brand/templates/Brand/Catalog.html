@@ -1,0 +1,354 @@
+{% extends 'Brand/basic.html' %}
+
+{% block title %}
+Каталог
+{% endblock %}
+
+
+{% block content %}
+
+{% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/catalog.css'%}">
+    <script src="{% static 'js/catalog.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+
+<!--  Картка для товару  -->
+
+<div class="container main-content">
+
+    <section id="categoryProducts" class="section_product">
+{% for product in products %}
+
+        {% if product.id == 4 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+             <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/H&M/short_leggings.jpg' %}"
+                 alt="Короткі легінси">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/H&M/alternative_short_leggings.webp' %}"
+                   alt="Короткі легінси">
+            </div>
+            <h2 class="title_product"> {{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del><span class="price_ds"> {{ product.discount }} </span> UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 5 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+             <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/lcwaikiki/t_shirt_white.webp' %}"
+                 alt="Футболка">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/lcwaikiki/alternative_t_shirt_white.webp' %}"
+                   alt="Футболка">
+            </div>
+            <h2 class="title_product">{{ product.title  }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                    <span class="price_ds"> {{ product.discount }} </span>UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 6 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+            <div class="image-container">
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/vovk/costum_red.webp' %}"
+                 alt="Костюм червоний">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/vovk/alternative_costum_red.jpg' %}"
+                   alt="Костюм червоний">
+            </div>
+            <h2 class="title_product">{{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                    <span class="price_ds"> {{ product.discount }} </span>UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 7 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+            <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/louis_vitton/t_shirt_with_print_monogram.webp' %}"
+                 alt="Плаття-футболка 'Monogram Tiles'">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/louis_vitton/alternative_t_shirt_with_print_monogram.webp' %}"
+                   alt="Плаття-футболка 'Monogram Tiles'">
+            </div>
+            <h2 class="title_product">{{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                    <span class="price_ds"> {{ product.discount }} </span>UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 8 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+             <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/colins/t_shirt_woman_white.webp' %}"
+                 alt="Футболка з коротким рукавом">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/colins/alternative_t_shirt_woman_white.webp' %}"
+                   alt="Футболка з коротким рукавом">
+            </div>
+            <h2 class="title_product">{{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                    <span class="price_ds"> {{ product.discount }} </span> UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 9 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+              <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/versace/knotted_backless_long_dress.webp' %}"
+                 alt="Вузлова довга сукня без спини">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/versace/alternative_knotted_backless_long_dress.webp' %}"
+                   alt="Вузлова довга сукня без спини">
+            </div>
+            <h2 class="title_product">{{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                    <span class="price_ds"> {{ product.discount }} </span>UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+        {% if product.id == 10 %}
+        <div class="product_wrapper">
+        <article class="product-card">
+
+            <div class="image-container">
+
+            <img class="card-img"
+                 src="{% static 'pictures/catalog/sinsay/skirt_midi_with_flowers_print.webp' %}"
+                 alt="Спідниця міді з квітковим принтом">
+
+            <img class="alternative_card-img"
+                   src="{% static 'pictures/catalog/sinsay/alternative_skirt_midi_with_flowers_print.webp' %}"
+                   alt="Спідниця міді з квітковим принтом">
+            </div>
+
+            <h2 class="title_product">{{ product.title }}</h2>
+            {% if product.price == 0 %}
+                <p class="price"> <span class="none-price">Немає в наявності</span></p>
+            {% elif product.discount > 0 %}
+                <p class="price">Ціна: <del class="price-discount">{{ product.formatted_price }}</del>
+                  <span class="price_ds"> {{ product.discount }} </span>UAH</p>
+            {% else %}
+                <p class="price">Ціна: {{ product.formatted_price }} UAH</p>
+            {% endif %}
+            <p class="size">Розміри: {{ product.size }}</p>
+            <p class="describe">{{ product.description|linebreaks }}</p>
+            <button class="seen_b btn btn-primary" onclick="window.location.href='{% url 'product_detail' product.id %}'">Переглянути</button>
+            {% if product.price == 0 %}
+            <button class="btn btn-success disabled" onclick="window.location.href='{% url 'Head' %}'">Додати в кошик</button>
+            {% else %}
+                         <!-- Окрема форма для кожного товару -->
+            <form class="form-inline form_buying_product" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number"  value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit"   class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+            {% endif %}
+        </article>
+        </div>
+        {% endif %}
+
+{% endfor %}
+    </section>
+</div>
+{% endblock %}
+

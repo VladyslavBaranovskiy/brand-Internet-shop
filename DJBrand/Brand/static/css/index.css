@@ -1,0 +1,39 @@
+.main-content {
+    position: absolute;
+    width: 80%!important;
+    left: 17.5em;
+    text-align: center;
+}
+
+.slide {
+    position: relative;
+    object-fit: cover;
+    height: 500px;
+    width: 90%;
+    left: 2em;
+    margin-bottom: 40px;
+}
+
+.title-slide {
+    position: relative;
+    top: -40px;
+}
+
+.title-brands{
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 5px #0d6efd8c;
+    color: #02132efa;
+}
+
+.section_Brands {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 елементи в рядок */
+    gap: 10px;
+}
+
+.section_Brands img {
+    width: 200px; /* Встановіть бажаний розмір */
+    height: 200px; /* Збережіть пропорції, встановивши автоматичну висоту */
+    object-fit: scale-down;
+}
+

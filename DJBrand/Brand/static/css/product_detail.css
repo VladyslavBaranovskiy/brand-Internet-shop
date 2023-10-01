@@ -1,0 +1,60 @@
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 17em;
+    width: 82%;
+    flex-direction: column;
+}
+
+.section_image {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 елементи в рядок */
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.card-img {
+    width: 400px;
+    height: 600px;
+    object-fit: cover;
+}
+
+
+.product_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title_product {
+    font-weight: bold;
+    width: 100%;
+}
+
+.title {
+    color: #16458f;
+    font-weight: bold;
+    margin-bottom: 40px;
+
+}
+
+
+.price {
+    font-weight: bold;
+}
+
+.price_sp {
+    color: #16458f;
+}
+
+.price-no {
+    color: red;
+    font-weight: bold;
+}
+
+.price-discount {
+    color: red;
+    font-weight: bold;
+}
+

@@ -1,0 +1,14 @@
+{% extends 'Brand/basic.html' %}
+
+{% block title %}
+Підтвердження замовлення
+{% endblock %}
+
+{% block content %}
+    <div class="container main-content">
+        <h2>Ваше замовлення прийнято!</h2>
+        <h2>Номер замовлення: {{ order.order_number }}</h2>
+
+    </div>
+
+{% endblock %}

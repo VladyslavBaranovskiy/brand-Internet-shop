@@ -1,0 +1,41 @@
+.authform {
+    position: absolute;
+    width: 50%;
+    left: 32em;
+}
+
+.title_auth {
+    position: relative;
+    border-radius: 30px;
+    width: 90%;
+    color: #fff;
+    background-color: #0d6efd;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+    left: 1em;
+    box-shadow: 5px 5px 10px 5px #0d6efd1f;
+}
+
+.form_auth {
+    width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-log {
+    padding-right: 10px;
+}
+
+.button-seen {
+    bottom: 4.3em;
+    left: 12.1em;
+    position: relative;
+}
+
+.form-control {
+    box-shadow: 5px 5px 5px 3px #0f6ffd42;
+}

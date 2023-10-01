@@ -1,0 +1,80 @@
+{% extends 'Brand/basic.html' %}
+
+{% block title %}
+Оформити замовлення
+{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="{% static 'css/MakeAnOrder.css' %}">
+    <script src="{% static 'js/MakeAnOrder.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+
+
+
+<div class="container main-content">
+
+        <h2>Контактні дані</h2>
+
+    <form method="post" id="MakeAnOrder_id">
+    {% csrf_token %}
+    {{ form.as_p }}
+    </form>
+
+                    <h2>Замовлення</h2>
+
+        {% for item in products %}
+        <div class="container basket task">
+
+            <section class="section_image">
+            {% for image in item.images %}
+                <article class="product_image">
+                    <img id="fullscreen-image" class="card-img"
+                         src="{{ image.image.url }}"
+                         alt="{{ image.alt_text }}" onclick="openFullscreen(this)">
+                </article>
+            {% endfor %}
+            </section>
+
+            <div class="container content">
+
+                            <div class="product_title_size">
+                            <p>{{ item.product_title }}</p>
+                                </div>
+
+                            <div class="quantity">
+                                <span class="quantity-value">{{ item.number }}</span>
+                            </div>
+
+
+                            <div class="price">
+                         <p data-price="{{ product.product_price }}">{{ item.product_total_price }} UAH</p>
+                                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+        <div class="container total">
+        <p id="total-price" class="total-price">До сплати: {{ total_price }} UAH</p>
+        </div>
+
+        <div class="change_order">
+        <button type="submit" class="btn btn-warning" onclick="window.location.href='{% url 'Koshuk' %}'">Редагувати замовлення</button>
+        </div>
+
+
+    <button type="submit" class="makeanorder btn btn-primary" form="MakeAnOrder_id">Оформити замовлення</button>
+
+
+</div>
+{% endblock %}
+

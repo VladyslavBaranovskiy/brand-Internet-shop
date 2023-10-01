@@ -1,0 +1,75 @@
+{% extends 'Brand/basic.html' %}
+
+{% block title %}
+{{ product.title }}
+{% endblock %}
+
+
+
+{% block content %}
+{% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/product_detail.css'%}">
+    <script src="{% static 'js/product_detail.js' %}"></script>
+
+
+
+<div class="container main-content">
+
+<section class="section_image">
+    {% for image in product.images.all %}
+    <article class="product_image">
+    <img id="fullscreen-image" class="card-img"
+         src="{{ image.image.url }}"
+         alt="{{ image.alt_text }}" onclick="openFullscreen(this)">
+    </article>
+    {% endfor %}
+</section>
+
+<div class="product_title">
+        <h1 class="title">{{ product.title }}</h1>
+        {% if product.price == 0 %}
+        <button type="submit" class="btno_price btn btn-success disabled">Додати в кошик</button>
+        {% else %}
+            <form id="form_buying_product" class="form-inline" action="{% url 'Koshuk' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+                <input type="number" class="form-control" name="number" id="number" value="1" style="display: none;">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                    <button type="submit" id="submit_btn"  class="btn btn-success btn-buy"
+                            data-product_id="{{ product.id }}" data-product_title="{{ product.title }}"
+                            data-product_price="{% if product.discount %}{{ product.discount }}{% else %}{{ product.formatted_price }}{% endif %}">
+                        Додати в кошик
+                    </button>
+            </form>
+
+        {% endif %}
+</div>
+
+<div class="price_product">
+    {% if product.price == 0 %}
+    <p class="price-no">Немає в наявності</p>
+    {% elif product.discount > 0 %}
+    <p class="price">Розміри в наявності: <span>{{ product.size }}</span></p>
+    <p class="price">Ціна: <del>{{ product.formatted_price }}</del> UAH</p>
+    <p class="price">Знижка: <span class="price-discount">{{ product.discount }}</span> UAH</p>
+    {% else %}
+    <p class="price">Розміри в наявності: <span>{{ product.size }}</span></p>
+    <p class="price">Ціна: <span class="price_sp">{{ product.formatted_price }}</span> UAH</p>
+    {% endif %}
+
+</div>
+
+
+<div class="description_product">
+    <h1 class="title">Опис:</h1>
+    <p class="descrip">{{ product.description_detail|linebreaks }}</p>
+</div>
+
+
+</div>
+
+{% endblock %}
+

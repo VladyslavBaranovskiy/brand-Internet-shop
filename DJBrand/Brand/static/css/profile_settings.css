@@ -1,0 +1,150 @@
+.settingsprofile {
+    position: absolute;
+    width: 50%;
+    padding: 1%;
+    left: 28em;
+    top: 8%;
+}
+
+.main-cont {
+    margin-bottom: 30px;
+}
+
+.title-form {
+    border-radius: 30px;
+    margin-bottom: 30px;
+    color: #fff;
+    background-color: #0d6efd;
+    text-align: center;
+}
+
+.name-cont {
+     white-space: normal;
+     width: fit-content; /* Зробити контейнер шириною тільки до вмісту */
+     margin-right: 12em;
+     color: #0d6efd;
+     position: absolute;
+     top: 4em;
+
+}
+
+
+
+.photo {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 5px;
+    bottom: 20px;
+
+    left: 40em;
+}
+.avatar {
+
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.no_avatar {
+
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}
+
+
+
+.form_av {
+    text-align: right;
+    margin-bottom: 40px;
+}
+
+.button-container {
+     display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.del {
+    margin-right: 20px;
+}
+
+.onov{
+
+}
+
+.custom-file-input::-webkit-file-upload-button {
+        background-color: #fff;
+        color:  #0d6efd;
+        float: right;
+        font-weight: bold;
+}
+
+.general {
+    margin-bottom: 40px;
+}
+
+.form-firstname {
+    margin-bottom: 30px;
+}
+
+.first_name {
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.last_name {
+    text-align: center;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.username {
+    margin-bottom: 40px;
+}
+
+.form-username {
+    margin-bottom: 40px;
+}
+
+.poz {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0d6efd;
+    margin-right: 2em;
+}
+
+
+
+.email {
+    margin-bottom: 40px;
+}
+
+.mail {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0d6efd;
+    margin-right: 2em;
+}
+
+.form-control {
+    background-color: #f5f5f5;
+    color: #16458f;
+    text-align: center;
+    box-shadow: 5px 5px 5px #0f6ffd42;
+}
+
+button, input, optgroup, select, textarea {
+    text-align: center;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.save {
+     display: flex;
+     justify-content: center;
+}

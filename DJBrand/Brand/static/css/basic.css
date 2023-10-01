@@ -1,0 +1,7 @@
+.container {
+    background-color: #fff; /* задайте білий колір фону для всього сайту */
+    background-image: url("{% static 'pictures/bg.png'%}"); /* задайте шлях до зображення фону */
+    background-repeat: no-repeat; /* вимкніть повторення фонового зображення */
+    background-position: left top, right top; /* розташування фонового зображення по боках */
+    background-size: auto 100%; /* збережіть висоту фонового зображення і встановіть автоматичну ширину, щоб заповнити ширину сторінки */
+}
